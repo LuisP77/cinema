@@ -21,5 +21,5 @@ class FrontController extends Controller
     function admin () {
         return view('admin.index');
     }
-/*test*/
+
 }
