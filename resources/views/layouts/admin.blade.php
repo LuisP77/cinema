@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/metisMenu.min.css" rel="stylesheet">
-    <link href="css/sb-admin-2.css" rel="stylesheet">
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/metisMenu.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/sb-admin-2.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -19,7 +19,7 @@
 
     <div id="wrapper">
 
-        
+
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,7 +30,7 @@
                 </button>
                 <a class="navbar-brand" href="index.html">Cinema Admin</a>
             </div>
-           
+
 
             <ul class="nav navbar-top-links navbar-right">
                  <li class="dropdown">
@@ -96,13 +96,13 @@
         </div>
 
     </div>
-    
 
-    
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/metisMenu.min.js"></script>
-    <script src="js/sb-admin-2.js"></script>
+
+
+    <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::asset('js/metisMenu.min.js') }}"></script>
+    <script src="{{ URL::asset('js/sb-admin-2.js') }}"></script>
 
 </body>
 
