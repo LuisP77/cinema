@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
-
 class UsuarioController extends Controller
 {
     /**
@@ -15,7 +13,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+        $users = \App\User::All();
+        return view('usuarios.index', compact('users'));
     }
 
     /**
@@ -36,14 +35,13 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $user = New User();
-        $user::create([
+        \App\User::create([
           'name' => $request['name'],
           'email' => $request['email'],
           'password' => bcrypt($request['password']),
         ]);
 
-        return "Usuario registrado";
+        return redirect('/usuario')->with('message','store');
     }
 
     /**
