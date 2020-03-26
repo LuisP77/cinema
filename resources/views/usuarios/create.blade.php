@@ -1,6 +1,6 @@
 @extends('layouts.admin')
+@include('alerts.request')
 @section('content')
-  @include('alerts.request')
   <form method="POST" action="{{ url('/usuario') }}">
     @csrf
     <div class="form-group">
