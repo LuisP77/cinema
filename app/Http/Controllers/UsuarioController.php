@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User;
 use Session;
-//use App\Http\Requests\UserCreateRequest;
-//use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UsuarioController extends Controller
 {
