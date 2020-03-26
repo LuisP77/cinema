@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\User;
+use Session;
+//use App\Http\Requests\UserCreateRequest;
+//use App\Http\Requests\UserUpdateRequest;
 
 class UsuarioController extends Controller
 {
@@ -15,7 +18,8 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-        //
+       $users = User::All();
+       return view('usuarios.index', compact('users'));
     }
 
     /**
@@ -36,14 +40,13 @@ class UsuarioController extends Controller
      */
     public function store(Request $request)
     {
-        $user = New User();
-        $user::create([
-          'name' => $request['name'],
-          'email' => $request['email'],
-          'password' => bcrypt($request['password']),
-        ]);
-
-        return "Usuario registrado";
+        User::create([
+         'name' => $request['name'],
+         'email' => $request['email'],
+         'password' => $request['password'],
+       ]);
+       Session::flash('message','Usuario eliminado correctamente.');
+       return redirect('/usuario');
     }
 
     /**
@@ -65,7 +68,8 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('usuarios.edit',['user'=>$user]);
     }
 
     /**
@@ -77,7 +81,11 @@ class UsuarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->fill($request->all());
+        $user->save();
+        Session::flash('message','Usuario editado exitosamente.');
+        return redirect('/usuario');
     }
 
     /**
@@ -88,6 +96,8 @@ class UsuarioController extends Controller
      */
     public function destroy($id)
     {
-        //
+       User::destroy($id);
+       Session::flash('message','Usuario eliminado correctamente.');
+       return redirect('/usuario');
     }
 }

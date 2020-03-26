@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /*
+     * Set Password Attribute
+     */
+    function setPasswordAttribute($valor){
+        if ( !empty($valor) ) {
+            $this->attributes['password'] = \Hash::make($valor);
+        }
+    }
+
 }
