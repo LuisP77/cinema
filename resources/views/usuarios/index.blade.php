@@ -23,4 +23,5 @@
   			</tbody>
   		@endforeach
   	</table>
+    {{ $users->onEachSide(3)->links()  }}
 @endsection
