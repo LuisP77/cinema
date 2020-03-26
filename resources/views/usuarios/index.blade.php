@@ -17,5 +17,5 @@
   			</tbody>
   		@endforeach
   	</table>
-    {{ $users->onEachSide(3)->links()  }}
+    {{ $users->onEachSide(3)->links() }}
 @endsection
