@@ -40,11 +40,7 @@ class UsuarioController extends Controller
      */
     public function store(UserCreateRequest $request)
     {
-        User::create([
-         'name' => $request['name'],
-         'email' => $request['email'],
-         'password' => $request['password'],
-       ]);
+       User::create($request->all());
        Session::flash('message','Usuario eliminado correctamente.');
        return redirect('/usuario');
     }
@@ -68,7 +64,7 @@ class UsuarioController extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
+        $user = User::findOrFail($id);
         return view('usuarios.edit',['user'=>$user]);
     }
 
