@@ -18,7 +18,7 @@ class UsuarioController extends Controller
      */
     public function index()
     {
-       $users = User::All();
+       $users = User::paginate(3);
        return view('usuarios.index', compact('users'));
     }
 
@@ -38,7 +38,7 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserCreateRequest $request)
     {
         User::create([
          'name' => $request['name'],
@@ -79,7 +79,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->fill($request->all());
