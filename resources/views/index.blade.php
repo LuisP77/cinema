@@ -1,5 +1,6 @@
 @extends('layouts.principal')
-
+@include('alerts.errors')
+@include('alerts.request')
 @section('content')
 	<div class="header">
 		<div class="top-header">
@@ -15,6 +16,24 @@
 			</div>
 			<div class="clearfix"></div>
 		</div>
+
+		<div class="header-info">
+				<h1>BIG HERO 6</h1>
+				<form method="POST" action="{{ action('LogController@store') }}">
+			    @csrf
+			    <div class="form-group">
+			      <label for="email">Correo</label>
+			      <input type="text" class="form-control" id="email" name="email">
+			    </div>
+			    <div class="form-group">
+			      <label for="password">Contraseña</label>
+			      <input type="password" class="form-control" id="password" name="password">
+			    </div>
+			    <button class="btn btn-primary">Iniciar</button>
+			  </form>
+		</div>
+
+<!--
 		<div class="header-info">
 			<h1>BIG HERO 6</h1>
 			<p class="age"><a href="#">All Age</a> Don Hall, Chris Williams</p>
@@ -25,7 +44,9 @@
 			<a class="video" href="#"><i class="video1"></i>WATCH TRAILER</a>
 			<a class="book" href="#"><i class="book1"></i>BOOK TICKET</a>
 		</div>
+	-->	
 	</div>
+
 	<div class="review-slider">
 		 <ul id="flexiselDemo1">
 		<li><img src="images/r1.jpg" alt=""/></li>
