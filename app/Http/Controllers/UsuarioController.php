@@ -97,4 +97,12 @@ class UsuarioController extends Controller
        Session::flash('message','Usuario eliminado correctamente.');
        return redirect('/usuario');
     }
+
+    static public function isAdmin($user) {
+        if ($user->id == 2) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

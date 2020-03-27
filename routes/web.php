@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'FrontController@index');
+Route::get('/', 'FrontController@index')->name('/');
 Route::get('contact', 'FrontController@contact');
 Route::get('reviews', 'FrontController@reviews');
-Route::get('admin', 'FrontController@admin');
+Route::get('admin', 'FrontController@admin')->middleware('auth');
 
-Route::resource('usuario','UsuarioController');
+Route::resource('usuario','UsuarioController')->middleware('check.role', 'auth');
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');

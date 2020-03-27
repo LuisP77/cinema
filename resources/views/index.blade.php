@@ -1,6 +1,7 @@
 @extends('layouts.principal')
 @include('alerts.errors')
 @include('alerts.request')
+@include('alerts.middleware')
 @section('content')
 	<div class="header">
 		<div class="top-header">
@@ -44,7 +45,7 @@
 			<a class="video" href="#"><i class="video1"></i>WATCH TRAILER</a>
 			<a class="book" href="#"><i class="book1"></i>BOOK TICKET</a>
 		</div>
-	-->	
+	-->
 	</div>
 
 	<div class="review-slider">
