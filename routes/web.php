@@ -20,6 +20,7 @@ Route::get('admin', 'FrontController@admin')->middleware('auth');
 
 Route::resource('usuario','UsuarioController')->middleware('check.role', 'auth');
 Route::resource('genero','GenreController');
+Route::get('generos','GenreController@listing');
 
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');

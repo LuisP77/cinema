@@ -1,6 +1,6 @@
 $( document ).ready(function() {
 
-// Registrat Género
+// Registrar Género
     $("#genre-registro").click(function(){
       var dato = $("#genre").val();
       var token = $("#token").val();
@@ -27,9 +27,11 @@ $( document ).ready(function() {
       })
     });
 
-        $(".alert").on("close.bs.alert", function () {
-            $(".alert").hide();
-            return false;
-        });
+
+// Evitar destroy alert
+    $(".alert").on("close.bs.alert", function () {
+        $(".alert").hide();
+        return false;
+    });
 
 })

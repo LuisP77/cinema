@@ -114,6 +114,7 @@
     <script src="{{ URL::asset('js/metisMenu.min.js') }}"></script>
     <script src="{{ URL::asset('js/sb-admin-2.js') }}"></script>
     <script src="{{ URL::asset('js/scripts.js') }}"></script>
+    @yield('scripts')
 
 </body>
 

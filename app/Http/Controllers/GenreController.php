@@ -10,6 +10,16 @@ use Session;
 
 class GenreController extends Controller
 {
+    /*
+     * Listar generos
+     */
+     public function listing() {
+        $generos = Genre::all();
+        return response()->json([
+            $generos->toArray(),
+        ]);
+     }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +27,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        return view('genero.index');
     }
 
     /**
