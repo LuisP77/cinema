@@ -13,6 +13,7 @@
       </div>
       <div class="modal-footer">
         <a href="#" id="genre-actualizar" class="btn btn-primary">Actualizar</a>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

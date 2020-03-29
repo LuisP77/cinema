@@ -39,7 +39,11 @@ $( document ).ready(function() {
                     $("#genre-name-" + id).html(genre);
                     $('#edit-genre-modal').modal('toggle');
                 },
-                error: function (xhr, status) {
+                error: function (data) {
+                  console.log(data);
+                  var error = data.responseJSON.errors.genre[0];;
+                  error = error.replace('genre', 'género');
+                  alert(error);
                 },
                 complete : function(xhr, status) {
                 }
