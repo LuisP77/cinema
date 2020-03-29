@@ -75,7 +75,10 @@ class GenreController extends Controller
      */
     public function edit($id)
     {
-        //
+        $genre = Genre::find($id);
+        return response()->json(
+          $genre->toArray()
+        );
     }
 
     /**
@@ -87,7 +90,13 @@ class GenreController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $genre = Genre::findOrFail($id);
+        $genre->fill($request->all());
+        $genre->save();
+        Session::flash('message','Usuario editado exitosamente.');
+        return response()->json([
+          "message" => "ok"
+        ]);
     }
 
     /**

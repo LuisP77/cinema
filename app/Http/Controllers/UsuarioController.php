@@ -99,7 +99,7 @@ class UsuarioController extends Controller
     }
 
     static public function isAdmin($user) {
-        if ($user->id == 2) {
+        if ( !empty($user) && ($user->id == 2) ){
             return true;
         }else{
             return false;

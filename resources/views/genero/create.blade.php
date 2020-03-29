@@ -12,10 +12,7 @@
 		</div>
 
 		<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
-    <div class="form-group">
-      <label for="name">Género</label>
-      <input type="text" class="form-control" id="genre" name="genre">
-    </div>
+    @include('genero.form.genero')
     <a href="#" id="genre-registro" class="btn btn-primary">Registrar</a>
 
 	</form>

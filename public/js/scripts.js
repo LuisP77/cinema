@@ -23,6 +23,8 @@ $( document ).ready(function() {
               error = close + error;
               $("#msj-error").html(error);
               $("#msj-error").fadeIn();
+          },
+          complete : function(xhr, status) {
           }
       })
     });
