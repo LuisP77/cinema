@@ -107,6 +107,11 @@ class GenreController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $genre = Genre::findOrFail($id);
+        $genre->delete();
+        Session::flash('message','Usuario eliminado exitosamente.');
+        return response()->json([
+          "message" => "ok"
+        ]);
     }
 }
