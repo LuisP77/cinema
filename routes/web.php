@@ -22,5 +22,7 @@ Route::resource('usuario','UsuarioController')->middleware('check.role', 'auth')
 Route::resource('genero','GenreController');
 Route::get('generos','GenreController@listing');
 
+Route::resource('movies','MovieController');
+
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');

@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Genre;
+use App\Movie;
+use Session;
+
 class MovieController extends Controller
 {
     /**
@@ -23,7 +27,8 @@ class MovieController extends Controller
      */
     public function create()
     {
-        return 'Movie create';
+        $genres = Genre::pluck('genre', 'id');
+        return view('movies.create', compact('genres'));
     }
 
     /**
@@ -34,7 +39,9 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        return 'Movie store';
+        Movie::create($request->all());
+        Session::flash('message','Película creada correctamente.');
+        return redirect('/movies');
     }
 
     /**
