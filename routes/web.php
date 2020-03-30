@@ -26,3 +26,5 @@ Route::resource('movies','MovieController');
 
 Route::resource('log','LogController');
 Route::get('logout','LogController@logout');
+
+Route::post('email','EmailController@send_mail');
