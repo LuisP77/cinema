@@ -17,7 +17,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return 'Movie index';
+        $movies = Movie::getMovies();
+        return view('movies.index', compact('movies'));
     }
 
     /**
@@ -63,7 +64,9 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        return 'Movie edit';
+      $movie = Movie::findOrFail($id);
+      $genres = Genre::pluck('genre', 'id');
+      return view('movies.edit',compact('movie','genres'));
     }
 
     /**
@@ -75,7 +78,11 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return 'Movie update';
+        $movie = Movie::findOrFail($id);
+        $movie->fill($request->all());
+        $movie->save();
+        Session::flash('message','Película editada exitosamente.');
+        return redirect('/movies');
     }
 
     /**
@@ -86,6 +93,10 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        return 'Movie destroy';
+      $movie = Movie::findOrFail($id);
+      $movie->delete();
+      \Storage::delete($movie->poster);
+      Session::flash('message','Película eliminada correctamente.');
+      return redirect('/usuario');
     }
 }

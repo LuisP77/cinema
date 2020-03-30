@@ -45,7 +45,7 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app.movies'),
+            'root' => storage_path('app\public\app-movies'),
         ],
 
         'public' => [
