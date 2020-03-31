@@ -8,6 +8,7 @@ use App\User;
 use Session;
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Storage;
 
 class UsuarioController extends Controller
 {
@@ -90,7 +91,7 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    static public function destroy($id)
     {
        $user = User::findOrFail($id);
        $user->delete();
@@ -98,11 +99,19 @@ class UsuarioController extends Controller
        return redirect('/usuario');
     }
 
+
+// Check if Admin
     static public function isAdmin($user) {
         if ( !empty($user) && ($user->id == 2) ){
             return true;
         }else{
             return false;
         }
+    }
+
+//Get image filename
+    static public function getImageFilename($id){
+        $foto = User::where('id', $id)->pluck('foto');
+        return $foto;
     }
 }

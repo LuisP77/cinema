@@ -1,4 +1,6 @@
-<?php use App\Http\Controllers\UsuarioController; ?>
+<?php
+  use App\Http\Controllers\UsuarioController;
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,17 @@
                   @endif
                  <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                      <?php
+                        //Storage::disk('s3')->exists('file.jpg');
+                        $filename = UsuarioController::getImageFilename(Auth::user()->id);
+                        $filename = $filename[0];
+                      ?>
+                      @if (!empty($filename))
+                          <img src="{{asset('storage/app-movies/app-users/'.$filename)}}" alt="no picture" height="20" style="border-radius: 20px;">
+                      @else
+                          <i class="fa fa-user fa-fw"></i>
+                      @endif
+                      <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Ajustes</a>

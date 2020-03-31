@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Storage;
+use File;
 
 class User extends Authenticatable
 {
@@ -17,9 +19,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'foto'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -48,6 +48,14 @@ class User extends Authenticatable
     function setPasswordAttribute($valor){
         if ( !empty($valor) ) {
             $this->attributes['password'] = \Hash::make($valor);
+        }
+    }
+
+    public function setFotoAttribute($foto){
+        if (!empty($foto)) {
+          $foto_filename = rand(10000,99999) . '-' . $foto->getClientOriginalName();
+          $this->attributes['foto'] = $foto_filename;
+          Storage::disk('local')->put('app-users/'.$foto_filename, File::get($foto));
         }
     }
 
