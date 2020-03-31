@@ -4,7 +4,7 @@ $( document ).ready(function() {
     $("#genre-registro").click(function(){
       var dato = $("#genre").val();
       var token = $("#token").val();
-      var route = "http://localhost/cinema/public/genero";
+      var route = "/cinema/public/genero";
       $.ajax({
           url: route,
           headers: {'X-CSRF-TOKEN': token},

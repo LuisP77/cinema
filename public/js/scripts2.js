@@ -2,7 +2,7 @@ $( document ).ready(function() {
 
 // Llenar tabla de géneros
     var tablaDatos = $("#datos");
-    var route = "http://localhost/cinema/public/generos";
+    var route = "/cinema/public/generos";
     $.get(route, function(res){
         $(res[0]).each(function(key, value){
             htmlBtn1 = '<td><button class="btn btn-primary btn-genre-edit" value-id="' + value.id + '" data-toggle="modal" data-target="#edit-genre-modal">Editar</button>';
@@ -16,7 +16,7 @@ $( document ).ready(function() {
         //Mostrar dialogo
         $(".btn-genre-edit").on('click', function(){
             var id = $(this).attr("value-id");
-            var route = "http://localhost/cinema/public/genero/"+ id +"/edit";
+            var route = "/cinema/public/genero/"+ id +"/edit";
             $.get(route, function(res){
                 $("#genre").val(res.genre);
                 $("#hidden-genre-id").val(res.id);
@@ -27,7 +27,7 @@ $( document ).ready(function() {
             var id = $("#hidden-genre-id").val();
             var genre = $("#genre").val();
             var token = $("#token").val();
-            var route = "http://localhost/cinema/public/genero/"+ id;
+            var route = "/cinema/public/genero/"+ id;
             $.ajax({
                 url: route,
                 headers: {'X-CSRF-TOKEN': token},
@@ -54,7 +54,7 @@ $( document ).ready(function() {
         $(".btn-genre-delete").on('click', function(){
           var id = $(this).attr("value-id");
           var token = $("#token").val();
-          var route = "http://localhost/cinema/public/genero/"+ id;
+          var route = "/cinema/public/genero/"+ id;
           $.ajax({
               url: route,
               headers: {'X-CSRF-TOKEN': token},
