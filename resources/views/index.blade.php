@@ -32,6 +32,7 @@
 			    </div>
 			    <button class="btn btn-primary">Iniciar</button>
 			  </form>
+				{!!link_to('password/email', $title = 'Olvidaste tu contraseña?', $attributes = null, $secure = null)!!}
 		</div>
 
 <!--
